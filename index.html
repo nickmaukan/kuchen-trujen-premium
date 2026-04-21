@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuchen Trujen | Receta Especial de Familia</title>
+  <meta name="description" content="Kuchen artesanal horneado con receta especial de familia en Cuenca, Ecuador. El regalo perfecto para momentos inolvidables.">
+  <meta property="og:title" content="Kuchen Trujen | Kuchen Artesanal en Cuenca">
+  <meta property="og:description" content="Receta especial de familia, horneada con cariño. El regalo perfecto.">
+  <meta property="og:image" content="https://nickmaukan.github.io/ladulcemasa/images/kuchen-trujen-box.jpg">
+  <meta name="theme-color" content="#3D2B1F">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --cream: #FAF7F2;
+      --cream-dark: #F0EBE3;
+      --warm-white: #FFFDFA;
+      --brown-deep: #2C1F18;
+      --brown-mid: #5C4033;
+      --gold: #C9A962;
+      --gold-light: #E8D5A8;
+      --text-primary: #2C1F18;
+      --text-secondary: #6B5D4D;
+      --divider: #E8E0D5;
+      --success: #4A8C59;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background-color: var(--warm-white); color: var(--text-primary); line-height: 1.7; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center;
+      background: transparent; transition: all 0.5s;
+    }
+    .nav.scrolled { background: var(--warm-white); box-shadow: 0 2px 20px rgba(0,0,0,0.05); padding: 1rem 4rem; }
+    .nav-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; color: var(--brown-deep); text-decoration: none; letter-spacing: 2px; }
+    .nav-links { display: flex; gap: 3rem; align-items: center; }
+    .nav-links a { font-size: 0.9rem; color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-weight: 500; letter-spacing: 0.5px; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--brown-deep); color: var(--cream) !important; padding: 0.8rem 1.8rem; border-radius: 50px; transition: all 0.3s; }
+    .nav-cta:hover { background: var(--gold); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 8rem 4rem 4rem; position: relative; overflow: hidden;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--warm-white) 100%);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; max-width: 1400px; width: 100%;
+      align-items: center;
+    }
+    .hero-content { animation: fadeInUp 1s ease forwards; }
+    .hero-tag { display: inline-block; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; font-weight: 600; }
+    .hero-title { font-size: clamp(3rem, 6vw, 5rem); font-weight: 400; color: var(--brown-deep); margin-bottom: 1.5rem; line-height: 1.1; letter-spacing: 1px; }
+    .hero-subtitle { font-family: var(--font-display); font-style: italic; font-size: clamp(1.3rem, 2.5vw, 1.8rem); color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.5; }
+    .hero-divider { width: 60px; height: 1px; background: var(--gold); margin-bottom: 2rem; }
+    .hero-text { font-size: 1rem; color: var(--text-secondary); margin-bottom: 3rem; max-width: 400px; }
+    .hero-buttons { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--brown-deep); color: var(--cream); padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: all 0.4s; letter-spacing: 0.5px; }
+    .btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,169,98,0.2); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--brown-deep); padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: all 0.4s; border: 1px solid var(--brown-deep); }
+    .btn-secondary:hover { background: var(--brown-deep); color: var(--cream); }
+    .hero-image { position: relative; animation: fadeInUp 1s ease 0.3s forwards; opacity: 0; }
+    .hero-image img { width: 100%; max-width: 550px; border-radius: 20px; box-shadow: 0 40px 80px rgba(44,31,24,0.15); }
+    .hero-image::before { content: ''; position: absolute; top: -20px; right: -20px; width: 100%; height: 100%; border: 1px solid var(--gold-light); border-radius: 20px; z-index: -1; }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* MARQUEE */
+    .marquee {
+      background: var(--brown-deep); color: var(--cream); padding: 1rem 0; overflow: hidden;
+    }
+    .marquee-inner { display: flex; animation: marquee 20s linear infinite; }
+    .marquee-item { flex-shrink: 0; padding: 0 3rem; font-family: var(--font-display); font-style: italic; font-size: 1.1rem; opacity: 0.7; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* PRODUCTS */
+    .products { padding: 8rem 4rem; background: var(--warm-white); }
+    .section-header { text-align: center; margin-bottom: 5rem; }
+    .section-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 600; }
+    .section-title { font-size: clamp(2.5rem, 4vw, 3.5rem); color: var(--brown-deep); margin-bottom: 1rem; letter-spacing: 1px; }
+    .section-subtitle { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; color: var(--text-secondary); }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto; }
+    .product-card { background: var(--warm-white); border-radius: 16px; overflow: hidden; transition: all 0.5s; border: 1px solid var(--divider); }
+    .product-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(44,31,24,0.1); border-color: var(--gold-light); }
+    .product-img { width: 100%; height: 240px; object-fit: cover; background: var(--cream); display: flex; align-items: center; justify-content: center; }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; }
+    .product-img span { font-size: 4rem; }
+    .product-content { padding: 2rem; text-align: center; }
+    .product-name { font-size: 1.4rem; color: var(--brown-deep); margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+    .product-desc { font-size: 0.9rem; color: var(--text-secondary); font-style: italic; margin-bottom: 1.5rem; }
+    .product-footer { display: flex; justify-content: center; align-items: center; gap: 2rem; }
+    .product-price { font-size: 1.5rem; font-weight: 500; color: var(--gold); }
+    .product-btn { background: var(--brown-deep); color: var(--cream); border: none; padding: 0.8rem 2rem; border-radius: 50px; cursor: pointer; font-weight: 500; font-size: 0.9rem; transition: all 0.3s; letter-spacing: 0.5px; }
+    .product-btn:hover { background: var(--gold); }
+    .product-btn.added { background: var(--success); }
+
+    /* STORY */
+    .story { padding: 8rem 4rem; background: var(--cream); }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; max-width: 1200px; margin: 0 auto; align-items: center; }
+    .story-image { border-radius: 20px; overflow: hidden; }
+    .story-image img { width: 100%; height: auto; display: block; }
+    .story-content h2 { font-size: clamp(2rem, 3vw, 3rem); color: var(--brown-deep); margin-bottom: 1.5rem; }
+    .story-content p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.05rem; }
+    .story-signature { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; color: var(--gold); margin-top: 2rem; }
+
+    /* VALUES */
+    .values { padding: 8rem 4rem; background: var(--brown-deep); color: var(--cream); }
+    .values .section-title { color: var(--cream); }
+    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; max-width: 1200px; margin: 0 auto; }
+    .value-item { text-align: center; padding: 2rem; }
+    .value-icon { width: 60px; height: 60px; margin: 0 auto 1.5rem; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); }
+    .value-icon svg { width: 28px; height: 28px; }
+    .value-title { font-size: 1.2rem; color: var(--cream); margin-bottom: 0.5rem; }
+    .value-desc { font-size: 0.9rem; color: var(--cream); opacity: 0.7; }
+
+    /* TESTIMONIALS */
+    .testimonials { padding: 8rem 4rem; background: var(--warm-white); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; max-width: 1200px; margin: 0 auto; }
+    .testimonial-card { background: var(--cream); border-radius: 20px; padding: 3rem; text-align: center; position: relative; }
+    .testimonial-card::before { content: '"'; position: absolute; top: 20px; left: 30px; font-family: var(--font-display); font-size: 6rem; color: var(--gold-light); line-height: 1; }
+    .testimonial-stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .testimonial-text { font-style: italic; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+    .testimonial-author { font-family: var(--font-display); font-size: 1.1rem; color: var(--brown-deep); }
+
+    /* CTA */
+    .cta { padding: 10rem 4rem; text-align: center; background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%); }
+    .cta-title { font-size: clamp(2rem, 4vw, 3rem); color: var(--brown-deep); margin-bottom: 1rem; }
+    .cta-text { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 3rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: #25D366; color: white; padding: 1.2rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.4s; box-shadow: 0 10px 30px rgba(37,211,102,0.25); letter-spacing: 0.5px; }
+    .cta-btn:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(37,211,102,0.35); }
+
+    /* FOOTER */
+    .footer { padding: 4rem; background: var(--brown-deep); color: var(--cream); text-align: center; }
+    .footer-logo { font-family: var(--font-display); font-size: 2rem; color: var(--gold); margin-bottom: 1.5rem; letter-spacing: 2px; }
+    .footer-info { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .footer-info span { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; opacity: 0.8; }
+    .footer-social { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
+    .footer-social a { color: var(--cream); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+    .footer-social a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.85rem; opacity: 0.5; }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 30px rgba(37,211,102,0.4); transition: all 0.3s; }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* CART */
+    .cart-overlay { position: fixed; inset: 0; background: rgba(44,31,24,0.5); z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.3s; }
+    .cart-overlay.active { opacity: 1; visibility: visible; }
+    .cart-panel { position: fixed; top: 0; right: 0; width: 100%; max-width: 420px; height: 100%; background: var(--warm-white); z-index: 2001; transform: translateX(100%); transition: transform 0.4s ease; display: flex; flex-direction: column; }
+    .cart-panel.active { transform: translateX(0); }
+    .cart-header { padding: 1.5rem; background: var(--brown-deep); color: var(--cream); display: flex; justify-content: space-between; align-items: center; }
+    .cart-close { background: none; border: none; color: var(--cream); font-size: 2rem; cursor: pointer; }
+    .cart-items { flex: 1; overflow-y: auto; padding: 1rem; }
+    .cart-empty { text-align: center; padding: 3rem 1rem; color: var(--text-secondary); }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--divider); }
+    .cart-item-name { font-family: var(--font-display); font-weight: 500; color: var(--brown-deep); }
+    .cart-item-price { font-size: 0.9rem; color: var(--gold); }
+    .cart-item-remove { background: none; border: none; color: #C75050; cursor: pointer; font-size: 1.2rem; }
+    .cart-footer { padding: 1.5rem; border-top: 2px solid var(--divider); }
+    .cart-total { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 700; color: var(--brown-deep); margin-bottom: 1rem; }
+    .cart-total-price { color: var(--gold); }
+    .cart-form { display: flex; flex-direction: column; gap: 0.8rem; }
+    .cart-input, .cart-textarea { width: 100%; padding: 0.9rem 1rem; border: 2px solid var(--divider); border-radius: 12px; font-size: 1rem; font-family: var(--font-body); background: var(--cream); color: var(--text-primary); transition: border-color 0.3s; }
+    .cart-input:focus, .cart-textarea:focus { outline: none; border-color: var(--gold); }
+    .cart-textarea { min-height: 80px; resize: vertical; }
+    .whatsapp-btn { background: #25D366; color: white; border: none; padding: 1rem; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: all 0.3s; }
+    .whatsapp-btn:hover { background: #1DA851; }
+
+    /* MOBILE */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+      .hero-content { order: 2; }
+      .hero-image { order: 1; }
+      .hero-image img { max-width: 100%; }
+      .hero-text { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .story-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .nav { padding: 1rem 2rem; }
+      .nav-links { gap: 1.5rem; }
+    }
+    @media (max-width: 768px) {
+      .nav { padding: 1rem; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      .products { padding: 4rem 1.5rem; }
+      .story { padding: 4rem 1.5rem; }
+      .values { padding: 4rem 1.5rem; }
+      .values-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .testimonials { padding: 4rem 1.5rem; }
+      .cta { padding: 5rem 1.5rem; }
+      .footer { padding: 3rem 1.5rem; }
+      .footer-info { flex-direction: column; gap: 1rem; }
+      .whatsapp-float { bottom: 1.5rem; right: 1.5rem; width: 56px; height: 56px; }
+    }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">KUCHEN TRUJEN</a>
+    <div class="nav-links">
+      <a href="#sabores">Sabores</a>
+      <a href="#historia">Nuestra Historia</a>
+      <a href="#" onclick="toggleCart(); return false;" class="nav-cta">Pedir</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <span class="hero-tag">Cuenca, Ecuador</span>
+        <h1 class="hero-title">Kuchen Trujen</h1>
+        <p class="hero-subtitle">Receta especial de familia, horneada con cariño</p>
+        <div class="hero-divider"></div>
+        <p class="hero-text">Cada kuchen cuenta una historia. La nuestra comenzó con una receta que pasó de generación en generación, hasta llegar a tu mesa.</p>
+        <div class="hero-buttons">
+          <a href="#sabores" class="btn-primary">Ver Sabores</a>
+          <a href="#" onclick="sendWhatsAppDirect(); return false;" class="btn-secondary">Ordenar por WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://nickmaukan.github.io/ladulcemasa/images/kuchen-trujen-box.jpg" alt="Kuchen Trujen - Kuchen artesanal en caja">
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-inner">
+      <span class="marquee-item">• Kuchen Artesanal</span>
+      <span class="marquee-item">• Receta de Familia</span>
+      <span class="marquee-item">• Horneado con Amor</span>
+      <span class="marquee-item">• Entrega en Cuenca</span>
+      <span class="marquee-item">• Kuchen Artesanal</span>
+      <span class="marquee-item">• Receta de Familia</span>
+      <span class="marquee-item">• Horneado con Amor</span>
+      <span class="marquee-item">• Entrega en Cuenca</span>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="sabores">
+    <div class="section-header">
+      <span class="section-tag">Delicia artesanal</span>
+      <h2 class="section-title">Nuestros Sabores</h2>
+      <p class="section-subtitle">Tradición que se siente en cada capa</p>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story" id="historia">
+    <div class="story-grid">
+      <div class="story-image">
+        <img src="https://nickmaukan.github.io/ladulcemasa/images/kuchen-trujen-box.jpg" alt="Kuchen Trujen">
+      </div>
+      <div class="story-content">
+        <span class="section-tag">Nuestra Historia</span>
+        <h2>Una receta que trasciende generaciones</h2>
+        <p>Todo comenzó con una receta que mi abuela guardaba como un tesoro. Una mezcla perfecta de ingredientes selecionados y el secreto que solo el tiempo y el cariño pueden dar.</p>
+        <p>Hoy, cada kuchen que horneamos lleva ese mismo amor. Es nuestra manera de mantener viva una tradición que merece ser compartida.</p>
+        <p class="story-signature">— Kuchen Trujen</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values">
+    <div class="section-header">
+      <span class="section-tag" style="color: var(--gold);">¿Por qué nosotros?</span>
+      <h2 class="section-title">Hecho con amor</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-item fade-in">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 class="value-title">Artesanal</h3>
+        <p class="value-desc">Horneado a mano, como en casa de la abuela</p>
+      </div>
+      <div class="value-item fade-in">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="value-title">Ingredientes Selectos</h3>
+        <p class="value-desc">Solo lo mejor llega a tu mesa</p>
+      </div>
+      <div class="value-item fade-in">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 3v5M7 8V6a5 5 0 0 1 10 0v2"/></svg>
+        </div>
+        <h3 class="value-title">Ideal para Regalo</h3>
+        <p class="value-desc">Empaque elegante, sonrisa garantizada</p>
+      </div>
+      <div class="value-item fade-in">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17h18M3 17l2-9h14l2 9M9 8V5M15 8V5"/></svg>
+        </div>
+        <h3 class="value-title">Entrega en Cuenca</h3>
+        <p class="value-desc">Fresco en tu puerta, con cariño</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-header">
+      <span class="section-tag">Testimonios</span>
+      <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"El kuchen de ciruela es espectacular. Me recuerda a los que hacía mi abuela alemana. Y el empaque es hermoso."</p>
+        <p class="testimonial-author">Sofia Wegmann</p>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Pedí para el cumpleaños de mi mamá y fue la sensación. Ya es tradición en casa. ¡100% recomendado!"</p>
+        <p class="testimonial-author">María José E.</p>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"El regalo perfecto para mis suegros. El sabor es increíble y llega perfecto a la puerta."</p>
+        <p class="testimonial-author">Andrés Córdova</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2 class="cta-title">Tu momento especial nos inspira</h2>
+    <p class="cta-text">Cada kuchen cuenta una historia. ¿Cuál quieres contar hoy?</p>
+    <a href="#" onclick="sendWhatsAppDirect(); return false;" class="cta-btn">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Ordenar por WhatsApp
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-logo">Kuchen Trujen</p>
+    <div class="footer-info">
+      <span>🕐 Lunes a Sábado: 8:00 - 19:00</span>
+      <span>📍 Cuenca, Ecuador</span>
+      <span>📸 @kuchentrujen</span>
+    </div>
+    <div class="footer-social">
+      <a href="https://instagram.com/kuchentrujen" target="_blank">Instagram</a>
+    </div>
+    <p class="footer-copy">© 2026 Kuchen Trujen. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- CART -->
+  <div class="cart-overlay" onclick="toggleCart()"></div>
+  <div class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+      <h3>Tu Pedido</h3>
+      <button class="cart-close" onclick="toggleCart()">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"><div class="cart-empty">Tu carrito está vacío</div></div>
+    <div class="cart-footer" id="cartFooter" style="display: none;">
+      <div class="cart-total"><span>Total:</span><span class="cart-total-price" id="cartTotal">$0.00</span></div>
+      <div class="cart-form">
+        <input type="text" class="cart-input" id="cartAddress" placeholder="¿A qué sector de Cuenca?">
+        <textarea class="cart-textarea" id="cartNote" placeholder="Nota especial (opcional)"></textarea>
+        <button class="whatsapp-btn" onclick="sendWhatsApp()">Enviar por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="#" onclick="sendWhatsAppDirect(); return false;" class="whatsapp-float">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    const WHATSAPP = '593XXXXXXXXX';
+    const products = [
+      { id: 'kuchen-ciruela', name: 'Kuchen de Ciruela', desc: 'Ciruelas rojas del Valle Andino', price: 9.50, emoji: '🍑' },
+      { id: 'kuchen-durazno', name: 'Kuchen de Durazno', desc: 'Sol y dulzura de temporada', price: 9.00, emoji: '🍑' },
+      { id: 'kuchen-queso', name: 'Kuchen de Queso con Mora', desc: 'Queso fresco y mora serrana', price: 10.00, emoji: '🧀' },
+      { id: 'kuchen-manzana', name: 'Kuchen de Manzana', desc: 'La combinación que nunca falla', price: 9.50, emoji: '🍎', img: 'https://nickmaukan.github.io/ladulcemasa/images/kuchen-trujen-box.jpg' },
+      { id: 'pie-nueces', name: 'Pie de Nueces', desc: 'Nueces con caramelo dorado', price: 10.50, emoji: '🥜' },
+      { id: 'pie-manzana', name: 'Pie de Manzana', desc: 'Manzanas con canela', price: 8.50, emoji: '🍎' },
+      { id: 'cookie-choc', name: 'Cookie de Chocolate', desc: 'Chunks de chocolate belga', price: 4.50, emoji: '🍪' },
+      { id: 'alfajores', name: 'Alfajores', desc: 'Dulce de leche y coco', price: 5.00, emoji: '🥠' },
+    ];
+    let cart = [];
+
+    function renderProducts() {
+      document.getElementById('productsGrid').innerHTML = products.map(p => `
+        <div class="product-card">
+          <div class="product-img">${p.img ? `<img src="${p.img}" alt="${p.name}">` : `<span>${p.emoji}</span>`}</div>
+          <div class="product-content">
+            <h3 class="product-name">${p.name}</h3>
+            <p class="product-desc">${p.desc}</p>
+            <div class="product-footer">
+              <span class="product-price">$${p.price.toFixed(2)}</span>
+              <button class="product-btn" id="btn-${p.id}" onclick="addToCart('${p.id}')">
+                ${getCartQty(p.id) > 0 ? `✓ (${getCartQty(p.id)})` : 'Pedir'}
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function getCartQty(id) { const item = cart.find(i => i.id === id); return item ? item.qty : 0; }
+    function getProduct(id) { return products.find(p => p.id === id); }
+
+    function addToCart(id) {
+      const existing = cart.find(i => i.id === id);
+      if (existing) existing.qty++;
+      else { const p = getProduct(id); cart.push({ id: p.id, name: p.name, price: p.price, qty: 1 }); }
+      renderProducts();
+      updateCartUI();
+      const btn = document.getElementById(`btn-${id}`);
+      btn.classList.add('added');
+      setTimeout(() => btn.classList.remove('added'), 1500);
+    }
+
+    function updateCartUI() {
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      const items = document.getElementById('cartItems');
+      const footer = document.getElementById('cartFooter');
+      if (cart.length === 0) {
+        items.innerHTML = '<div class="cart-empty">Tu carrito está vacío</div>';
+        footer.style.display = 'none';
+      } else {
+        items.innerHTML = cart.map(i => `
+          <div class="cart-item">
+            <div class="cart-item-name">${i.name}</div>
+            <div>
+              <div class="cart-item-price">$${i.price.toFixed(2)} x ${i.qty}</div>
+              <button class="cart-item-remove" onclick="removeFromCart('${i.id}')">×</button>
+            </div>
+          </div>
+        `).join('');
+        footer.style.display = 'block';
+        document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+      }
+    }
+
+    function removeFromCart(id) { cart = cart.filter(i => i.id !== id); renderProducts(); updateCartUI(); }
+    function toggleCart() { document.getElementById('cartPanel').classList.toggle('active'); document.querySelector('.cart-overlay').classList.toggle('active'); }
+
+    function sendWhatsApp() {
+      const address = document.getElementById('cartAddress').value.trim();
+      const note = document.getElementById('cartNote').value.trim();
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      let msg = `🎂 *Pedido - Kuchen Trujen*\n─────────────────\n`;
+      cart.forEach(i => { msg += `${i.name} x${i.qty} — $${(i.price * i.qty).toFixed(2)}\n`; });
+      msg += `─────────────────\n💰 *Total: $${total.toFixed(2)}*\n`;
+      if (address) msg += `📍 Entrega: ${address}\n`;
+      if (note) msg += `📝 Nota: ${note}\n`;
+      msg += `\n¡Gracias por confiar! 🧡`;
+      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function sendWhatsAppDirect() {
+      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('🎂 Hola! Quiero hacer un pedido de Kuchen Trujen 🧡')}`, '_blank');
+    }
+
+    // Nav scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('nav');
+      if (window.pageYOffset > 100) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+
+    // Fade-in
+    const observer = new IntersectionObserver(e => { e.forEach(el => { if (el.isIntersecting) el.classList.add('visible'); }); }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    renderProducts();
+  </script>
+
+</body>
+</html>
