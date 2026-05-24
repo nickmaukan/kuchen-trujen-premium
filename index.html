@@ -6,7 +6,7 @@
   <title>Kuchen Trujen | Receta Especial de Familia</title>
   <meta name="description" content="Kuchen artesanal horneado con receta especial de familia en Cuenca, Ecuador. El regalo perfecto para momentos inolvidables.">
   <meta property="og:title" content="Kuchen Trujen | Kuchen Artesanal en Cuenca">
-  <meta property="og:description" content="Receta especial de familia, horneada con cariño. El regalo perfecto.">
+  <meta property="og:description" content="Receta Especial. El regalo perfecto.">
   <meta property="og:image" content="https://nickmaukan.github.io/ladulcemasa/images/kuchen-trujen-box.jpg">
   <meta name="theme-color" content="#2B1238">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
@@ -63,6 +63,22 @@
       background-size: 64px 64px;
       mask-image: linear-gradient(180deg, transparent, #000 10%, #000 85%, transparent);
     }
+    body::after {
+      content: '✦    ✧       ✦  ✧       ✦       ✧    ✦';
+      position: fixed;
+      inset: 10vh 0 auto 0;
+      height: 80vh;
+      pointer-events: none;
+      z-index: -1;
+      color: rgba(75,30,99,0.16);
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.7rem);
+      letter-spacing: clamp(1.8rem, 7vw, 7rem);
+      line-height: 9rem;
+      text-align: center;
+      white-space: pre-wrap;
+      opacity: 0.85;
+    }
     h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; letter-spacing: 0.01em; }
     section { scroll-margin-top: 92px; }
     ::selection { background: var(--gold-light); color: var(--plum-deep); }
@@ -98,7 +114,7 @@
     /* HERO */
     .hero { min-height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; }
     .hero::after {
-      content: '☾  ✦  ✧';
+      content: '☾  ✦  ✧  ✦  ✧';
       position: absolute; right: clamp(1.5rem, 8vw, 7rem); top: 24%; z-index: 4;
       color: rgba(240,216,161,0.58); font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2.4rem); letter-spacing: 1.2rem;
       pointer-events: none;
@@ -151,8 +167,9 @@
 
     /* PRODUCTS */
     .products { padding: 8rem 4rem; background: linear-gradient(180deg, var(--cream-soft) 0%, var(--warm-white) 100%); position: relative; }
-    .products::before { content: '✧'; position: absolute; top: 6rem; left: 7%; color: rgba(185,134,36,0.22); font-size: 3rem; font-family: var(--font-display); }
-    .section-header { text-align: center; margin-bottom: 4.8rem; }
+    .products::before { content: '✧ ✦ ✧'; position: absolute; top: 6rem; left: 7%; color: rgba(185,134,36,0.22); font-size: 3rem; font-family: var(--font-display); }
+    .section-header { text-align: center; margin-bottom: 4.8rem; position: relative; }
+    .section-header::after { content: '✦ ✧ ✦'; display: block; color: rgba(185,134,36,0.38); font-family: var(--font-display); letter-spacing: 1rem; margin-top: 1rem; font-size: 0.95rem; }
     .section-header .section-tag { justify-content: center; }
     .section-title { font-size: clamp(2.7rem, 4.2vw, 4rem); color: var(--plum-deep); margin-bottom: 0.9rem; letter-spacing: 0.4px; line-height: 1.08; }
     .section-subtitle { font-family: var(--font-display); font-style: italic; font-size: 1.26rem; color: var(--text-secondary); }
@@ -161,6 +178,7 @@
       background: rgba(255,252,247,0.86); border-radius: 26px; overflow: hidden; transition: all 0.45s ease;
       border: 1px solid rgba(75,30,99,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset, var(--shadow-card); position: relative;
     }
+    .product-card::after { content: '✦'; position: absolute; top: 1rem; right: 1rem; z-index: 2; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,249,240,0.74); color: var(--mustard); box-shadow: 0 8px 22px rgba(43,18,56,0.10); backdrop-filter: blur(8px); }
     .product-card::before { content: ''; position: absolute; inset: 0; border-radius: 26px; padding: 1px; background: linear-gradient(135deg, rgba(240,216,161,0.65), transparent 34%, rgba(75,30,99,0.18)); mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; pointer-events: none; opacity: 0; transition: opacity 0.4s; }
     .product-card:hover { transform: translateY(-9px); box-shadow: 0 32px 75px rgba(43,18,56,0.14); border-color: rgba(185,134,36,0.35); }
     .product-card:hover::before { opacity: 1; }
@@ -201,7 +219,7 @@
 
     /* CTA */
     .cta { padding: 9rem 4rem; text-align: center; background: radial-gradient(circle at 50% 0%, rgba(233,185,78,0.15), transparent 26rem), linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%); position: relative; overflow: hidden; }
-    .cta::before { content: '✧  ☾  ✦'; position: absolute; left: 50%; transform: translateX(-50%); top: 4.7rem; color: rgba(75,30,99,0.18); letter-spacing: 1rem; font-family: var(--font-display); }
+    .cta::before { content: '✦  ✧  ☾  ✦  ✧'; position: absolute; left: 50%; transform: translateX(-50%); top: 4.7rem; color: rgba(75,30,99,0.18); letter-spacing: 1rem; font-family: var(--font-display); }
     .cta-title { font-size: clamp(2.4rem, 4.4vw, 4rem); color: var(--plum-deep); margin-bottom: 1rem; line-height: 1.08; }
     .cta-text { font-size: 1.08rem; color: var(--text-secondary); margin-bottom: 3rem; max-width: 520px; margin-left: auto; margin-right: auto; }
     .cta-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: linear-gradient(135deg, #25D366, #1FAE56); color: white; padding: 1.15rem 2.8rem; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 1.04rem; transition: all 0.35s; box-shadow: 0 16px 34px rgba(37,211,102,0.25); letter-spacing: 0.5px; }
@@ -304,7 +322,6 @@
     <a href="#" class="nav-logo">KUCHEN TRUJEN</a>
     <div class="nav-links">
       <a href="#sabores">Sabores</a>
-      <a href="#historia">Nuestra Historia</a>
       <a href="#" onclick="toggleCart(); return false;" class="nav-cta">Pedir</a>
     </div>
   </nav>
@@ -318,7 +335,7 @@
     <div class="hero-content">
       <span class="hero-tag">Cuenca, Ecuador</span>
       <h1 class="hero-title">Kuchen Trujen</h1>
-      <p class="hero-subtitle">Receta especial de familia, horneada con cariño</p>
+      <p class="hero-subtitle">Receta Especial</p>
       <div class="hero-divider"></div>
       <p class="hero-text">Cada kuchen cuenta una historia. La nuestra comenzó con una receta que pasó de generación en generación, hasta llegar a tu mesa.</p>
       <div class="hero-buttons">
@@ -350,22 +367,6 @@
       <p class="section-subtitle">Tradición que se siente en cada capa</p>
     </div>
     <div class="products-grid" id="productsGrid"></div>
-  </section>
-
-  <!-- STORY -->
-  <section class="story" id="historia">
-    <div class="story-grid">
-      <div class="story-image">
-        <img src="https://nickmaukan.github.io/ladulcemasa/images/kuchen-trujen-box.jpg" alt="Kuchen Trujen">
-      </div>
-      <div class="story-content">
-        <span class="section-tag">Nuestra Historia</span>
-        <h2>Una receta que trasciende generaciones</h2>
-        <p>Todo comenzó con una receta que mi abuela guardaba como un tesoro. Una mezcla perfecta de ingredientes seleccionados y el secreto que solo el tiempo y el cariño pueden dar.</p>
-        <p>Hoy, cada kuchen que horneamos lleva ese mismo amor. Es nuestra manera de mantener viva una tradición que merece ser compartida.</p>
-        <p class="story-signature">— Kuchen Trujen</p>
-      </div>
-    </div>
   </section>
 
   <!-- TESTIMONIALS -->
