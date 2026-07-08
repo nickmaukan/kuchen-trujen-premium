@@ -171,8 +171,8 @@
     }
     .hero-content { position: relative; z-index: 10; padding: 8rem 6rem; max-width: 760px; animation: fadeInUp 1s ease forwards; }
     .hero-mascot {
-      position: absolute; right: clamp(2.5rem, 8vw, 8rem); bottom: clamp(2rem, 7vh, 5rem); z-index: 9;
-      width: clamp(230px, 24vw, 380px); pointer-events: none; opacity: 0.96;
+      position: absolute; right: clamp(3rem, 8vw, 8rem); bottom: clamp(3rem, 8vh, 5.5rem); z-index: 9;
+      width: clamp(210px, 20vw, 320px); height: auto; aspect-ratio: 1 / 1; object-fit: contain; pointer-events: none; opacity: 0.94;
       filter: drop-shadow(0 24px 45px rgba(0,0,0,0.34)) drop-shadow(0 0 32px rgba(233,185,78,0.22));
       animation: mascotFloat 5.8s ease-in-out infinite;
     }
@@ -316,6 +316,7 @@
 
     /* MOBILE */
     @media (max-width: 1024px) {
+      .hero-mascot { display: none; }
       .hero-content { padding: 6rem 3rem; }
       .story-grid { grid-template-columns: 1fr; gap: 3rem; }
       .story-image { max-width: 720px; margin: 0 auto; }
